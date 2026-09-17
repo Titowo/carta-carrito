@@ -185,3 +185,58 @@ details[open] .categoria-titulo::after {
     color: white;
     font-size: 14px; /* Un poco más pequeño para que quepa la palabra entera */
 }
+
+/* --- ESTILOS DEL FOOTER Y CONTACTO --- */
+.redes-contacto {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.telefono {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.btn-instagram {
+    background-color: #E1306C; /* Color oficial de Instagram */
+    color: white;
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: 2px solid #111;
+    box-shadow: 3px 3px 0 #111;
+    display: inline-block;
+    transition: transform 0.1s;
+}
+
+.btn-instagram:active {
+    transform: scale(0.95); /* Pequeño efecto al tocar el botón en el celular */
+    box-shadow: 1px 1px 0 #111;
+}
+
+/* --- ESTILOS CREADOR (TITO) --- */
+.creditos-creador {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    color: #e0f7fa;
+    opacity: 0.9;
+}
+
+.creditos-creador a {
+    color: #e0f7fa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.creditos-creador a:hover {
+    text-decoration: underline;
+}
