@@ -1,0 +1,187 @@
+/* Configuraciones generales */ * { box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #00bfff; /* Azul vibrante estilo El Desvío */
+    font-family: 'Nunito', sans-serif;
+    color: #111;
+    padding: 15px;
+    padding-bottom: 50px;
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.titulo-principal {
+    background-color: #5ce1e6;
+    border: 3px solid #111;
+    border-radius: 30px;
+    display: inline-block;
+    padding: 10px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    color: #111;
+    box-shadow: 4px 4px 0 #111;
+    letter-spacing: 2px;
+}
+
+/* Categorías (ej: VIENESAS, BEBESTIBLES) */
+.categoria-titulo {
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    margin: 35px 0 20px 0;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Las lineas blancas a los lados de los títulos */
+.categoria-titulo::before,
+.categoria-titulo::after {
+    content: "";
+    height: 3px;
+    width: 40px;
+    background-color: white;
+    display: block;
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+/* Estilo de los productos */
+.producto {
+    background-color: white;
+    border: 3px solid #111;
+    border-radius: 40px;
+    padding: 10px 15px 10px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 3px 0 #111;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-right: 10px;
+}
+
+.nombre {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.desc {
+    font-size: 11px;
+    color: #555;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+/* Etiqueta de precio */
+.precio {
+    background-color: #ffcc00;
+    border: 3px solid #111;
+    border-radius: 30px;
+    padding: 8px 15px;
+    font-weight: 800;
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: white;
+}
+
+.logo-footer p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    text-shadow: 2px 2px 0 #006bb3;
+    margin-top: 10px;
+}
+
+.telefono {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.loader {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+/* --- ESTILOS PARA LOS DESPLEGABLES --- */
+details.categoria-desplegable {
+    margin-bottom: 20px;
+}
+
+/* Ocultar la flecha por defecto del navegador en el summary */
+details.categoria-desplegable summary {
+    cursor: pointer;
+    list-style: none; /* Firefox/Chrome */
+    outline: none;
+}
+details.categoria-desplegable summary::-webkit-details-marker {
+    display: none; /* Safari */
+}
+
+/* Animación suave al desplegar la lista de productos */
+.productos-lista {
+    padding-top: 10px;
+    animation: deslizarAbajo 0.3s ease-in-out;
+}
+
+@keyframes deslizarAbajo {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Indicador visual de que es desplegable (un pequeño '+' o '-') */
+.categoria-titulo::after {
+    content: "▼";
+    font-size: 14px;
+    background: none;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+}
+
+details[open] .categoria-titulo::after {
+    content: "▲";
+}
+
+/* --- ESTILOS PARA PRODUCTOS AGOTADOS --- */
+.producto.agotado {
+    background-color: #f5f5f5;
+    border-color: #999;
+    box-shadow: 3px 3px 0 #999;
+    opacity: 0.7; /* Lo hace ver un poco transparente */
+}
+
+.producto.agotado .nombre, 
+.producto.agotado .desc {
+    color: #666;
+    text-decoration: line-through; /* Tacha el nombre */
+}
+
+.producto.agotado .precio {
+    background-color: #555; /* Etiqueta gris oscura */
+    border-color: #333;
+    color: white;
+    font-size: 14px; /* Un poco más pequeño para que quepa la palabra entera */
+}
