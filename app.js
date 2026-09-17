@@ -51,11 +51,9 @@ async function renderizarMenu() {
 
                 // Usamos <details> para hacer el contenedor desplegable nativo
                 // Añadimos 'open' al primer elemento para que cargue abierto por defecto
-                const atributoOpen = index === 0 ? "open" : "";
-                
+                // Contenedor desplegable nativo (todos inician cerrados por defecto)
                 const details = document.createElement("details");
                 details.className = "categoria-desplegable";
-                if (atributoOpen) details.setAttribute("open", "");
 
                 // <summary> actúa como el botón del desplegable
                 details.innerHTML = `<summary class="categoria-titulo">${categoria.toUpperCase()}</summary>`;

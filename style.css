@@ -1,4 +1,6 @@
-/* Configuraciones generales */ * { box-sizing: border-box;
+/* --- CONFIGURACIONES GENERALES --- */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -11,7 +13,7 @@ body {
     padding-bottom: 50px;
 }
 
-/* Encabezado */
+/* --- ENCABEZADO Y LOGO --- */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -31,32 +33,78 @@ header {
     letter-spacing: 2px;
 }
 
-/* Categorías (ej: VIENESAS, BEBESTIBLES) */
+/* --- NUEVO ESTILO DE CATEGORÍAS DESPLEGABLES --- */
+details.categoria-desplegable {
+    margin-bottom: 20px;
+}
+
+/* Ocultar flechas por defecto de los navegadores */
+details.categoria-desplegable summary {
+    cursor: pointer;
+    list-style: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent; 
+}
+details.categoria-desplegable summary::-webkit-details-marker {
+    display: none;
+}
+
+/* El diseño del "botón" de la categoría */
 .categoria-titulo {
-    text-align: center;
+    background-color: #111;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
-    margin: 35px 0 20px 0;
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+    font-size: 20px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 3px solid white;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+    transition: transform 0.1s;
+}
+
+/* Pequeño efecto de hundimiento al tocar la pantalla */
+.categoria-titulo:active {
+    transform: scale(0.98);
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+/* Indicador visual de la flecha */
+.categoria-titulo::after {
+    content: "▼";
+    font-size: 16px;
+    background-color: #ffcc00;
+    color: #111;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: transform 0.3s ease; 
 }
 
-/* Las lineas blancas a los lados de los títulos */
-.categoria-titulo::before,
-.categoria-titulo::after {
-    content: "";
-    height: 3px;
-    width: 40px;
-    background-color: white;
-    display: block;
-    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+/* Cuando el menú está abierto, la flecha gira */
+details[open] .categoria-titulo::after {
+    transform: rotate(-180deg);
 }
 
-/* Estilo de los productos */
+/* --- ANIMACIÓN Y CONTENEDOR DE PRODUCTOS --- */
+.productos-lista {
+    padding-top: 15px;
+    animation: deslizarAbajo 0.3s ease-in-out;
+}
+
+@keyframes deslizarAbajo {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ESTILO DE LOS PRODUCTOS DISPONIBLES --- */
 .producto {
     background-color: white;
     border: 3px solid #111;
@@ -88,7 +136,6 @@ header {
     line-height: 1.2;
 }
 
-/* Etiqueta de precio */
 .precio {
     background-color: #ffcc00;
     border: 3px solid #111;
@@ -99,7 +146,36 @@ header {
     white-space: nowrap;
 }
 
-/* Footer */
+/* --- ESTILOS PARA PRODUCTOS AGOTADOS --- */
+.producto.agotado {
+    background-color: #f5f5f5;
+    border-color: #999;
+    box-shadow: 3px 3px 0 #999;
+    opacity: 0.7;
+}
+
+.producto.agotado .nombre, 
+.producto.agotado .desc {
+    color: #666;
+    text-decoration: line-through; 
+}
+
+.producto.agotado .precio {
+    background-color: #555; 
+    border-color: #333;
+    color: white;
+    font-size: 14px; 
+}
+
+/* --- LOADER --- */
+.loader {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+/* --- FOOTER Y REDES SOCIALES --- */
 footer {
     text-align: center;
     margin-top: 60px;
@@ -113,80 +189,6 @@ footer {
     margin-top: 10px;
 }
 
-.telefono {
-    margin-top: 5px;
-    font-size: 18px;
-}
-
-.loader {
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    margin-top: 50px;
-}
-
-/* --- ESTILOS PARA LOS DESPLEGABLES --- */
-details.categoria-desplegable {
-    margin-bottom: 20px;
-}
-
-/* Ocultar la flecha por defecto del navegador en el summary */
-details.categoria-desplegable summary {
-    cursor: pointer;
-    list-style: none; /* Firefox/Chrome */
-    outline: none;
-}
-details.categoria-desplegable summary::-webkit-details-marker {
-    display: none; /* Safari */
-}
-
-/* Animación suave al desplegar la lista de productos */
-.productos-lista {
-    padding-top: 10px;
-    animation: deslizarAbajo 0.3s ease-in-out;
-}
-
-@keyframes deslizarAbajo {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Indicador visual de que es desplegable (un pequeño '+' o '-') */
-.categoria-titulo::after {
-    content: "▼";
-    font-size: 14px;
-    background: none;
-    box-shadow: none;
-    width: auto;
-    height: auto;
-}
-
-details[open] .categoria-titulo::after {
-    content: "▲";
-}
-
-/* --- ESTILOS PARA PRODUCTOS AGOTADOS --- */
-.producto.agotado {
-    background-color: #f5f5f5;
-    border-color: #999;
-    box-shadow: 3px 3px 0 #999;
-    opacity: 0.7; /* Lo hace ver un poco transparente */
-}
-
-.producto.agotado .nombre, 
-.producto.agotado .desc {
-    color: #666;
-    text-decoration: line-through; /* Tacha el nombre */
-}
-
-.producto.agotado .precio {
-    background-color: #555; /* Etiqueta gris oscura */
-    border-color: #333;
-    color: white;
-    font-size: 14px; /* Un poco más pequeño para que quepa la palabra entera */
-}
-
-/* --- ESTILOS DEL FOOTER Y CONTACTO --- */
 .redes-contacto {
     margin-top: 15px;
     display: flex;
@@ -202,7 +204,7 @@ details[open] .categoria-titulo::after {
 }
 
 .btn-instagram {
-    background-color: #E1306C; /* Color oficial de Instagram */
+    background-color: #E1306C;
     color: white;
     text-decoration: none;
     font-family: 'Nunito', sans-serif;
@@ -217,11 +219,11 @@ details[open] .categoria-titulo::after {
 }
 
 .btn-instagram:active {
-    transform: scale(0.95); /* Pequeño efecto al tocar el botón en el celular */
+    transform: scale(0.95);
     box-shadow: 1px 1px 0 #111;
 }
 
-/* --- ESTILOS CREADOR (TITO) --- */
+/* --- FIRMA DEL CREADOR --- */
 .creditos-creador {
     margin-top: 40px;
     padding-top: 20px;
